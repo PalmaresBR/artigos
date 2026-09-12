@@ -1,0 +1,79 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>When to Turn Off the Old Stream After an Icecast Migration</title>
+<meta name="description" content="From Shoutcast to Icecast: A Practical Migration Guide for Stations That Cannot Afford Silence Switching your streaming server ranks among the jobs that pl">
+</head><body><article><h1>When to Turn Off the Old Stream After an Icecast Migration</h1>
+<h2 id="titulo-principal">From Shoutcast to Icecast: A Practical Migration Guide for Stations That Cannot Afford Silence</h2>
+<p>Switching your streaming server ranks among the jobs that plenty of station owners keep postponing. The reason is simple: every broken link means listeners who hit play, hear nothing and move on. Still, there are good reasons to make the move, ranging from better metadata handling to a more adaptable streaming workflow. This guide covers the move from a Shoutcast-based setup to Icecast hosting in the sequence that preserves your audience, one step at a time.</p>
+<a href="https://en.brlogic.com/icecast" target="_blank" rel="noopener"><img src="https://prompt.startgoogle.online/uploads/print-Q-fESBEQxm.jpg" alt="Icecast hosting" title="Icecast hosting" loading="lazy" style="max-width:100%;height:auto;display:block;margin:0 auto" /></a>
+<p>This is not yet another comparison of the two servers. If you are still deciding which one to use, that question deserves a separate article. In this guide, the choice is already made, and what matters is execution: mount points, encoders, player links, directories and the first days after the switch.</p>
+<h3 id="where-listeners-get-lost">The Real Points Where a Migration Loses Listeners</h3>
+<p>Listeners rarely abandon a station because the sound got different. They leave because a link went dead. The average station keeps its stream URL spread across far more places than its owner remembers: the player on the website, the station app, a voice assistant skill, radio directories, social media profiles, old newsletters and sometimes car systems which stored the link long ago.</p>
+<div style="padding:15px 0;">
+  <strong>Table of Contents</strong>
+  <ul>
+<li><a href="#where-listeners-get-lost">Where Stations Actually Lose Listeners During a Migration</a></li>
+<li><a href="#map-every-stream-link">Step One: Map Every Place Your Stream Lives</a></li>
+<li><a href="#prepare-new-server">Step Two: Prepare the New Icecast Server Before Anyone Hears It</a></li>
+<li><a href="#reconfigure-encoders">Step Three: Point Your Encoders to the New Address</a></li>
+<li><a href="#run-in-parallel">Step Four: Broadcast on Both Servers for a While</a></li>
+<li><a href="#switch-links-order">Step Five: Update the Links in the Right Order</a></li>
+<li><a href="#auto-dj-safety-net">Step Six: Load the Auto DJ Before the Cutover</a></li>
+<li><a href="#watch-first-days">Step Seven: Watch the Numbers During the First Days</a></li>
+<li><a href="#tell-your-audience">Should You Tell Your Audience About the Move?</a></li>
+<li><a href="#mistakes-that-cost-listeners">Mistakes That Cost Stations Listeners During a Move</a></li>
+<li><a href="#staying-compatible">Why Protocol Compatibility Makes the Move Easier</a></li>
+  </ul>
+</div>
+<p>Each of these entry points represents a door to your broadcast. When the previous server goes offline before every one of them has been updated, a few paths just close. Fortunately, this risk is almost entirely a matter of planning, rather than technical skill.</p>
+<h3 id="map-every-stream-link">Step One: Map Every Place Your Stream Lives</h3>
+<p>Prior to changing any server setting, create a spreadsheet and list each location where your stream URL appears. Start with the obvious ones: the embedded player, the listen button on your homepage and the stream setting in your mobile app. Then, move on to the less obvious entries: directory listings, a voice assistant skill, partner sites that embed your station, QR codes and URLs inside old posts.</p>
+<p>Beside each entry, write down which person has access to edit it, how long a change takes to go live and if it relies on someone outside your team. App store reviews, for example, can take several days. Understanding this in advance shows you how many days the old and new servers need to run side by side.</p>
+<h3 id="prepare-new-server">Step Two: Set Up the Icecast Side Quietly First</h3>
+<p>With the inventory in hand, configure the destination server without announcing anything. In Icecast, each stream sits at a mount point, an address path like /live or /stream that your encoder sends audio to and listeners' players read from. Choose the mount names now and keep them: changing a mount point once the links are replaced would mean repeating the entire list again.</p>
+<p>This is equally the moment to settle the format and the bit rate. Matching what your listeners already receive avoids unpleasant surprises on legacy devices and in-car players; upgrading sound quality can wait, once the migration is settled. If several people broadcast live, set up a separate password for each studio or presenter, a feature that BRLOGIC offers so each login may be managed individually.</p>
+<h3 id="reconfigure-encoders">Step Three: Update Every Encoder That Feeds the Stream</h3>
+<p>Good news for teams attached to their tools: a migration doesn't force new encoder software. The BRLOGIC servers work with widely used broadcasting programs such as Oddcast, SAM, butt, RadioCaster and Simplecast through the Icecast and Shoutcast protocols. In most cases, you only replace the server address, the port, the mount point and the password in every encoder profile.</p>
+<p>Further reading: <a href="https://en.brlogic.com/shoutcast">Shoutcast hosting</a></p>
+<p>When you prefer a simpler route, BRLOGIC additionally offers its own free broadcasting software, the BRLOGIC Broadcaster, in which starting a broadcast is a matter of copying and pasting a transmission key. Whatever tool you pick, keep a backup of the previous configuration: it is your rollback path in case anything goes wrong during the first hours.</p>
+<h3 id="run-in-parallel">Step Four: Run the Old and New Streams in Parallel</h3>
+<p>The most reliable approach to changing providers without silence is to broadcast to both at the same time. Many encoders can send the same audio to two destinations; if yours can't, a second encoder instance on the same computer does the job. During this window, anyone using an outdated link still hears your programming, while every updated link begins reading from the new server.</p>
+<p>Take advantage of this overlap to test the stream across several kinds of device: a desktop browser, an Android handset, an iPhone, a voice speaker and a car if possible. Listen for gaps, stutters and whether song titles appear correctly, including accented characters. Issues caught at this stage affect no listeners, because the original stream is still carrying the audience.</p>
+<h3 id="switch-links-order">Step Five: Swap the Stream Links from Slowest to Fastest</h3>
+<p>Return to your spreadsheet and change the slowest entries first. New app versions and directory profiles can need several days to show a change, so those should go to the top of the list. The station's own website, player and social profile links can come last, since they update in minutes. The point is straightforward: by the time the previous server shuts down, no link ought to lead there anymore, and every listener arrives on the new Icecast hosting setup without ever noticing that anything changed.</p>
+<p>A detail that often slips: listing sites and aggregators sometimes cache the stream address for a while. After updating them, confirm a few days later that the station really plays through those apps. If it doesn't, the fix is usually a new request to the directory, not a change on your side.</p>
+<h3 id="auto-dj-safety-net">Step Six: Prepare the Automated Playlist Ahead of Time</h3>
+<p>A migration often takes place while someone is live or when programming depends on automation. Prior to the cutover, upload your audio files, jingles and imaging to the Auto DJ of the new platform, build the playlists and define their times. This way, should the live feed fail in the middle of the process, your radio stays on air rather than going quiet.</p>
+<p>BRLOGIC offers features which come in handy here, including scheduled playlists, a dynamic queue for adding files without editing the playlist, and time announcements with male and female voices. Nothing here replaces the live hosts, but it gives the station something to air whenever the team is busy with the technical work.</p>
+<h3 id="watch-first-days">Step Seven: Watch the Numbers During the First Days</h3>
+<p>The switch isn't the end; the first few days after it show if any door was forgotten. Compare listener numbers by time of day against the figures you normally saw before the migration. A sudden drop in one time slot or from one region often signals an entry still pointing at the previous server.</p>
+<p>Here is where in-depth audience reports really make a difference. In the BRLOGIC platform, the reports show listeners broken down by country, state and city through a map you can explore, together with the audience history and the history of played tracks. Comparing this information against your spreadsheet is an efficient way to locate the link that was missed.</p>
+<h3 id="tell-your-audience">Letting Listeners Know Without Alarming Them</h3>
+<p>In most cases, a technical migration does not need a formal announcement: if the plan works, nobody notices. Even so, a short message during your shows and on social media may help throughout the overlap. Ask listeners to tell you if the player stops with a particular device or application, and offer people an easy channel to report it, like a message or a form on your website.</p>
+<p>Those messages tend to be surprisingly useful, because listeners use paths that never made it into your spreadsheet. A car stereo with a saved address, a forgotten bookmark or a small directory are common cases. Every message is one more line for your list and one fewer person who drifts away without a word.</p>
+<p>We recommend this content: <a href="https://en.brlogic.com/icecast">Icecast hosting</a></p>
+<h3 id="mistakes-that-cost-listeners">Mistakes That Cost Stations Listeners During a Move</h3>
+<p>A very common mistake is turning off the previous server on the same day the new one goes live. Even with a flawless list, something usually takes longer than planned, and several days of parallel streaming cost much less than losing a share of the audience.</p>
+<p>Further recurring slip-ups include: renaming the mount points in the middle of the process, increasing the bit rate during the same week as the migration (two changes at once make any problem harder to diagnose), forgetting the stream address in your app and leaving the smart speaker skill linked to the old stream. Every one of these has an easy fix, though only if it gets spotted early.</p>
+<h3 id="staying-compatible">Keeping Compatibility with the Tools You Already Use</h3>
+<p>Part of what worries station owners about moving away from Shoutcast hosting is the assumption that all their equipment will have to change. In reality, a well-designed Shoutcast alternative based on Icecast maintains compatibility for the encoders, web players and directories stations already use. That is why the steps in this guide focus on addresses rather than equipment.</p>
+<p>That is also the reason the choice of provider matters. When comparing Icecast server hosting providers, look for a service that includes an SSL certificate, MP3 and AAC streaming, separate passwords for each announcer and clear statistics. BRLOGIC combines these items alongside a radio website, apps, custom players and an Alexa skill on a single dashboard, and this cuts down the number of places you need to update the next time something needs changing.</p>
+<h3 id="faq">Frequently Asked Questions</h3>
+<h4 id="faq-1">Do I need to replace my encoder software to move to Icecast?</h4>
+<p>Usually not. Tools such as Oddcast, SAM, butt and RadioCaster work with BRLOGIC streaming servers through the Icecast and Shoutcast protocols. You only need to update the server address, port, mount point and password in the encoder settings.</p>
+<h4 id="faq-2">Do listeners need to change anything on their side?</h4>
+<p>As long as each link on your list has been replaced before the previous server is switched off, they do not need to do anything. Listeners keep hitting play on the same buttons as always. The exception is an app that has the stream address written into the code, since that requires an update in the stores.</p>
+<h4 id="faq-3">For how long should I keep the old and new streams in parallel?</h4>
+<p>It depends on the slowest item in your inventory. When all your links are updated in a single day, a brief overlap might be enough; when a new app version or a directory is involved, plan for several days and then confirm each item before shutting down the original server.</p>
+<h4 id="faq-4">Should I keep my existing mount names?</h4>
+<p>Whenever possible, yes. Keeping identical paths leaves the list of updates smaller and lowers the risk of a mistake breaking one of the players. The key point is to decide ahead of updating the links, so you don't need to repeat the work.</p>
+<h4 id="faq-5">Will listing platforms still carry my stream after the move?</h4>
+<p>In principle, yes, provided every listing receives the new stream URL. Radio teams coming from Shoutcast hosting frequently keep profiles set up years ago, sometimes by someone who has since left the team. Edit each one early, because certain platforms take time to process the change.</p>
+<h4 id="faq-6">Can I get support from BRLOGIC during the migration?</h4>
+<p>Yes. BRLOGIC provides technical support through the customer area, plus step-by-step tutorials inside its help center, including how to broadcast live using common encoder programs and how to set up playlists.</p>
+<h2 id="cta">Plan Your Migration and Keep Every Listener</h2>
+<p>Changing servers does not need to be a leap in the dark. With a complete list of your links, a period of simultaneous streaming and an Auto DJ ready as a safety net, the move becomes a checklist, rather than a risk. The audience should perceive nothing more than consistent quality, and never the transition behind it.</p>
+<p>If you are prepared to make the move, explore the Icecast hosting plans at BRLOGIC, a Brazilian company that offers an all-in-one platform built for broadcasters: live streaming and Auto DJ, web players, a station website, apps and an Alexa skill. Compare the plans, reach out to their sales team and start the move with a clear plan in hand.</p>
+<a href="https://en.brlogic.com/icecast" target="_blank" rel="noopener"><button>LEARN MORE</button></a>
+<p><small>BRLOGIC — <a href="https://en.brlogic.com/icecast">https://en.brlogic.com/icecast</a></small></p>
+</article></body></html>
